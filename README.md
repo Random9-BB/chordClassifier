@@ -62,9 +62,9 @@
 
 - trying octave (from C3 to C4) normalization, the effect is good at some previous bad samples (all these samples should be C chord but were previously misclassified:
 
-<img src="./README.assets/1.png" alt="1" height="250" /> ➝ <img src="./README.assets/2.png" alt="2" height="250" />
+  <img src="./README.assets/1.png" alt="1" height="250" /> ➝ <img src="./README.assets/2.png" alt="2" height="250" />
 
-<img src="./README.assets/3.png" alt="1" height="250" /> ➝ <img src="./README.assets/4.png" alt="2" height="250" />
+  <img src="./README.assets/3.png" alt="1" height="250" /> ➝ <img src="./README.assets/4.png" alt="2" height="250" />
 
 
 ### NN
