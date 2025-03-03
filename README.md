@@ -9,8 +9,7 @@
 
 - dataset is based on kaggle's guitar chords V3
 
-  > [!NOTE]
-  >
+  > NOTE!!
   > Not all chords are included, only:
   >
   > ```python
@@ -59,14 +58,13 @@
   4. **Compute Weighted Differences**: The absolute frequency difference between each input frequency and its nearest C chord frequency is calculated, then weighted by its magnitude.
   5. **Summing the Weighted Differences**: The final weighted difference sum represents the overall deviation of the input spectrum from the ideal C major chord structure.
 
-  > [!NOTE]
-  > probably works probably not. Since the frequency & note are not linear relevant, maybe we need to do logarithmic operations on high frequencies, and do exponentiation operations on low frequencies.
+  > NOTE!! probably works probably not. Since the frequency & note are not linear relevant, maybe we need to do logarithmic operations on high frequencies, and do exponentiation operations on low frequencies.
 
 - trying octave (from C3 to C4) normalization, the effect is good at some previous bad samples (all these samples should be C chord but were previously misclassified:
 
-  <img src="/Users/random9/repo/chordClassifier/README.assets/1.png" alt="1" style="zoom:33%;" />        $\to$      <img src="/Users/random9/repo/chordClassifier/README.assets/2.png" alt="2" style="zoom:33%;" />
+  <img src="./README.assets/1.png" alt="1" style="zoom:33%;" />        $\to$      <img src="./README.assets/2.png" alt="2" style="zoom:33%;" />
   
-  <img src="/Users/random9/repo/chordClassifier/README.assets/3.png" alt="1" style="zoom:33%;" />        $\to$      <img src="/Users/random9/repo/chordClassifier/README.assets/4.png" alt="2" style="zoom:33%;" />
+  <img src="./README.assets/3.png" alt="1" style="zoom:33%;" />        $\to$      <img src="./README.assets/4.png" alt="2" style="zoom:33%;" />
 
 ### NN
 
