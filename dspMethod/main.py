@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 
-file_path = "../dataset/Training/C/C_Electric_Fabi_2.wav"
+file_path = "../dataset/Training/C/C_Electric_Fabi_1.wav"
 y, sr = librosa.load(file_path, sr=None)
 
 
@@ -48,6 +48,6 @@ plt.xlim(0, sr / 2)
 plt.legend()
 plt.show()
 
-print("Top 6 detected frequencies and notes:")
-for freq, note in zip(top_frequencies, top_notes):
-    print(f"{freq:.2f} Hz -> {note}")
+print("Top 6 detected frequencies, notes, and magnitudes:")
+for freq, note, mag in zip(top_frequencies, top_notes, top_magnitudes):
+    print(f"{freq:.2f} Hz -> {note} (Magnitude: {mag:.2f})")

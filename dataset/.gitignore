@@ -1,3 +1,4 @@
 # This directory is ignored, but remains in the repository, use /setup.sh to load dataset
 *
+.DS_Store
 !.gitignore
