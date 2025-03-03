@@ -2,7 +2,7 @@ import os
 from freqSpectrum import extract_frequencies
 from evaluate import identify_chord
 
-dataset_path = "../dataset/Training/C/"
+dataset_path = "../dataset/Training/Dm/"
 
 total_files = 0
 correct_predictions = 0
@@ -10,7 +10,6 @@ correct_predictions = 0
 for filename in os.listdir(dataset_path):
     if filename.endswith(".wav"):
         file_path = os.path.join(dataset_path, filename)
-        print(f"Processing: {file_path}")
         
 
         frequencies_data = extract_frequencies(file_path)
@@ -19,7 +18,7 @@ for filename in os.listdir(dataset_path):
         predicted_chord = identify_chord(frequencies_data)
         
 
-        if predicted_chord == "C":
+        if predicted_chord == "Dm":
             correct_predictions += 1
         
         total_files += 1

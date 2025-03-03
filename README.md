@@ -9,7 +9,7 @@
 
 - dataset is based on kaggle's guitar chords V3
 
-  > NOTE!!
+  > **NOTE:**
   > Not all chords are included, only:
   >
   > ```python
@@ -55,7 +55,7 @@
   4. **Compute Weighted Differences**: The absolute frequency difference between each input frequency and its nearest C chord frequency is calculated, then weighted by its magnitude.
   5. **Summing the Weighted Differences**: The final weighted difference sum represents the overall deviation of the input spectrum from the ideal C major chord structure.
 
-  > NOTE!! probably works probably not. Since the frequency & note are not linear relevant, maybe we need to do logarithmic operations on high frequencies, and do exponentiation operations on low frequencies.
+  > **NOTE:** probably works probably not. Since the frequency & note are not linear relevant, maybe we need to do logarithmic operations on high frequencies, and do exponentiation operations on low frequencies.
 
 - trying octave (from C3 to C4) normalization, the effect is good at some previous bad samples (all these samples should be C chord but were previously misclassified:
 
@@ -63,6 +63,20 @@
 
   <img src="./README.assets/3.png" alt="1" height="250" /> ➝ <img src="./README.assets/4.png" alt="2" height="250" />
 
+- after test on whole training set, the accuracy for each chord varies:
+
+  | Chord | Accuracy |
+  | ----- | -------- |
+  | Am    | 79.55%   |
+  | Bb    | 80.11%   |
+  | Bdim  | 48.86%   |
+  | C     | 18.75%   |
+  | Dm    | 64.20%   |
+  | Em    | 73.86%   |
+  | F     | 36.36%   |
+  | G     | 17.05%   |
+
+	not sure about the reason but it is definitely related to the structure of different types of chord such as major, minor, diminished.
 
 ### NN
 
