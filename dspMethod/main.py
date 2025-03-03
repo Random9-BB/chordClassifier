@@ -1,53 +1,32 @@
-import librosa
-import librosa.display
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.signal import find_peaks
+import os
+from freqSpectrum import extract_frequencies
+from evaluate import identify_chord
+
+dataset_path = "../dataset/Training/C/"
+
+total_files = 0
+correct_predictions = 0
+
+for filename in os.listdir(dataset_path):
+    if filename.endswith(".wav"):
+        file_path = os.path.join(dataset_path, filename)
+        print(f"Processing: {file_path}")
+        
+
+        frequencies_data = extract_frequencies(file_path)
+        
+
+        predicted_chord = identify_chord(frequencies_data)
+        
+
+        if predicted_chord == "C":
+            correct_predictions += 1
+        
+        total_files += 1
 
 
-file_path = "../dataset/Training/C/C_Electric_Fabi_1.wav"
-y, sr = librosa.load(file_path, sr=None)
+accuracy = (correct_predictions / total_files) * 100 if total_files > 0 else 0
 
-
-D = librosa.stft(y, n_fft=2048, hop_length=512)
-S = np.abs(D)
-
-
-sum_spectrum = np.sum(S, axis=1)
-
-frequencies = librosa.fft_frequencies(sr=sr, n_fft=2048)
-
-peaks, properties = find_peaks(sum_spectrum, height=np.max(sum_spectrum) * 0.05, distance=5)
-
-peak_frequencies = frequencies[peaks]
-peak_magnitudes = sum_spectrum[peaks]
-
-top_indices = np.argsort(peak_magnitudes)[-6:]
-top_frequencies = peak_frequencies[top_indices]
-top_magnitudes = peak_magnitudes[top_indices]
-
-sorted_indices = np.argsort(top_frequencies)
-top_frequencies = top_frequencies[sorted_indices]
-top_magnitudes = top_magnitudes[sorted_indices]
-
-
-top_notes = [librosa.midi_to_note(librosa.hz_to_midi(f)) for f in top_frequencies]
-
-plt.figure(figsize=(10, 5))
-plt.plot(frequencies, sum_spectrum, color='b', label="Spectrum")
-
-for freq, note, mag in zip(top_frequencies, top_notes, top_magnitudes):
-    plt.axvline(freq, color='r', linestyle='--', alpha=0.6)
-    plt.text(freq, mag * 1.1, note, color='r', fontsize=12, rotation=45)
-
-plt.xlabel("Frequency (Hz)")
-plt.ylabel("Amplitude")
-plt.title("Summed Spectrogram with Top 6 Notes")
-plt.grid(True)
-plt.xlim(0, sr / 2)
-plt.legend()
-plt.show()
-
-print("Top 6 detected frequencies, notes, and magnitudes:")
-for freq, note, mag in zip(top_frequencies, top_notes, top_magnitudes):
-    print(f"{freq:.2f} Hz -> {note} (Magnitude: {mag:.2f})")
+print(f"\nTotal WAV files processed: {total_files}")
+print(f"Correct Predictions: {correct_predictions}")
+print(f"Accuracy: {accuracy:.2f}%")
