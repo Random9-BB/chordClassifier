@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> repo still in construction ...
+
 # Different ways to classify simple guitar chords
 
 
