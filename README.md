@@ -80,6 +80,17 @@
 
 ### NN
 
-- using frequency spectrum to train the model (PLAN) as it is more readable to human ; - )
-- ... to be continued 
+- **Date:** 2024-03-04: using frequency spectrum top 6 peaks to train the model (PLAN) as it is more readable to human ; - )
+
+- Fuck! it doesn't work that much, the accuracy is like 50%, then drop ...
+
+  ```shell
+  >>> Training Progress:  72%|▋| 721/1000 [00:58<00:21, 13.15it/s, accuracy=0.534
+  Early stopping triggered at epoch 722.
+  ```
+
+  possible reasons:
+
+  1. The frequency spectrum lacks granularity, maybe 6 peaks is too Idealized for neural network.
+  2. the network itself is not solid enough.
 
